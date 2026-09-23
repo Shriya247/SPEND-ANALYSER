@@ -1,26 +1,22 @@
 # 💰 Spend Analyzer Using C++
 
-A simple C++ console application that helps users track their monthly expenses and understand their spending habits. 📊
+Spend Analyzer is a simple C++ console program for recording monthly expenses and getting a basic summary of spending. 📊 It shows total expenses, category-wise spending, savings, and the highest expense.
 
 ## ✨ Features
 
 * 💵 Enter monthly salary and expenses
-* 📂 Categorize expenses into Food, Travel, and Others
-* 📊 View total and category-wise spending
-* 💰 Calculate savings or loss
+* 🍔 Categorize expenses as Food, Travel, or Others
+* 📊 Calculate total spending and savings
+* 📈 Show category-wise spending percentages
 * 🔝 Find the highest expense
-* ⚠️ Identify spending status
-* 💡 Get basic spending suggestions
+* ⚠️ Display spending status
 
-## 🛠️ Built With
+## 🛠️ Concepts Used
 
-**C++**
-
-### 📚 Concepts Used
-
-Classes & Objects • Arrays • Functions • Loops • Conditional Statements • Encapsulation
+💻 C++ Classes & Objects • Arrays • Functions • Loops • Conditional Statements
 
 ## 🎯 Purpose
 
-This project was developed to practice C++ programming concepts while building a simple real-world expense analysis application.
+Built as a practical C++ project to apply programming concepts to a simple everyday expense-tracking problem.
+
 
