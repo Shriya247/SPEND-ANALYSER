@@ -1,0 +1,152 @@
+#include<iostream>
+using namespace std;
+
+class SpendAnalyzer
+{
+    int n;
+    float amount[50];
+    int category[50];
+    float total = 0, food = 0, travel = 0, others = 0;
+    float max = 0;
+    float salary;
+    string month;
+
+public:
+
+    void input()
+    {
+        cout << "Enter month: ";
+        cin >> month;
+
+        cout << "Enter your monthly salary: ";
+        cin >> salary;
+
+        cout << "\nEnter number of expenses: ";
+        cin >> n;
+
+        for(int i = 0; i < n; i++)
+        {
+            cout << "\nExpense " << i+1 << endl;
+
+            cout << "Enter amount: ";
+            cin >> amount[i];
+
+            cout << "Category (1-Food 2-Travel 3-Others): ";
+            cin >> category[i];
+        }
+    }
+
+    void calculate()
+    {
+        total = 0;
+        food = 0;
+        travel = 0;
+        others = 0;
+
+        if(n > 0)
+            max = amount[0];
+
+        for(int i = 0; i < n; i++)
+        {
+            total += amount[i];
+
+            if(category[i] == 1)
+                food += amount[i];
+            else if(category[i] == 2)
+                travel += amount[i];
+            else
+                others += amount[i];
+
+            if(amount[i] > max)
+                max = amount[i];
+        }
+    }
+
+    void display()
+    {
+        float food_per = 0, travel_per = 0, others_per = 0;
+
+        if(total != 0)
+        {
+            food_per = (food / total) * 100;
+            travel_per = (travel / total) * 100;
+            others_per = (others / total) * 100;
+        }
+
+        float savings = salary - total;
+
+        cout << "\n----- SPENDING REPORT -----\n";
+        cout << "Month: " << month << endl;
+        cout << "Salary: " << salary << endl;
+        cout << "Total Spending: " << total << endl;
+
+        if(savings >= 0)
+            cout << "Savings: " << savings << endl;
+        else
+            cout << "Loss: " << -savings << endl;
+
+        cout << "\nCategory-wise Spending:\n";
+        cout << "Food: " << food << " (" << food_per << "%)\n";
+        cout << "Travel: " << travel << " (" << travel_per << "%)\n";
+        cout << "Others: " << others << " (" << others_per << "%)\n";
+
+        if(n > 0)
+            cout << "\nHighest Expense: " << max << endl;
+
+        if(total > salary)
+            cout << "Status: Overspending\n";
+        else if(total > 0.7 * salary)
+            cout << "Status: High Spending\n";
+        else
+            cout << "Status: Safe Spending\n";
+
+        if(food > travel && food > others)
+            cout << "Try reducing food expenses!\n";
+        else if(travel > food && travel > others)
+            cout << "Try reducing travel expenses!\n";
+        else
+            cout << "Manage other expenses wisely!\n";
+    }
+};
+
+int main()
+{
+    SpendAnalyzer s[12];
+    int choice = 0, count = 0;
+
+    while(choice != 3)
+    {
+        cout << "\n1. Enter Data\n2. Show All Reports\n3. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if(choice == 1)
+        {
+            if(count < 12)
+            {
+                s[count].input();
+                s[count].calculate();
+                count++;
+            }
+            else
+                cout << "Maximum months reached\n";
+        }
+        else if(choice == 2)
+        {
+            for(int i = 0; i < count; i++)
+            {
+                s[i].display();
+            }
+        }
+        else if(choice == 3)
+        {
+            cout << "Exiting...\n";
+        }
+        else
+        {
+            cout << "Invalid choice\n";
+        }
+    }
+
+    return 0;
+}
